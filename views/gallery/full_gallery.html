@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block nav %}
+{% include "inc/navbar-registered.html" %}
+{% endblock nav %}
+
+{% block content %}
+{{(message == '') ? "<h1>View our gallery</h1>" : "<h2>Currently we dont have any images in our gallery</h2>" }}
+<section class="gallery-section {{(message == '') ? 'filled' : 'empty' }}">
+    {% for image in images %}
+     {% if image.id in picturesLiked %}
+        {% set className = 'active' %}
+     {% else %}
+        {% set className = '' %}
+     {% endif %}
+    <div class="img-overlay">
+        <img class="img-in-gallery" src="{{image.img_src|e}}" alt="gallery image">
+        <div class="pop-up">
+            <a data-id ="{{image.id}}" class='heartz {{className}}' href='#'>&hearts;</a>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock content %}
+{%block script %}
+
+<script src="{{urlroot}}/public/assets/js/add-like.js"></script>
+{% endblock script %}
+

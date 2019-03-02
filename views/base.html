@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>{{ sitename }}</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="{{
+        urlroot
+      }}/public/assets/plugins/tableSorter/themes/blue/style.css"
+    />
+    <link rel="stylesheet" href="{{ urlroot }}/public/assets/css/style.css" />
+  </head>
+
+  <body>
+    {% block nav %} {% include "inc/navbar-guest.html" %} {% endblock nav %}
+    <div class="container">
+      <div class="content">{% block content %} {% endblock content %}</div>
+    </div>
+    <!-- End of container -->
+    {% block foot %}
+    <footer><p>MiniInstagram Copywright &copy; 2018</p></footer>
+    {% endblock foot %}
+
+    <!-- js content -->
+
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{
+        urlroot
+      }}/public/assets/plugins/tableSorter/jquery.tablesorter.min.js"></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{{ urlroot }}/public/assets/js/main.js"></script>
+    {% block script %} {% endblock script %}
+  </body>
+</html>

@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% block nav %}
+{% include "inc/navbar-registered.html" %}
+{% endblock nav %}
+
+{% block content %}
+<h1>Profile info:</h1>
+<!-- User section -->
+<section class="user-info-section">
+    <div class="list-group mt-3">
+        <button type="button" class="list-group-item list-group-item-action active">
+            <strong>Username: </strong> {{user.username|e}}
+        </button>
+        <button type="button" class="list-group-item list-group-item-action"><strong>Email: </strong> {{user.email|e}}</button>
+        <button type="button" class="list-group-item list-group-item-action"><strong>Number of posted pictures: </strong> {{user.picture_num|e}}</button>
+        <button type="button" class="list-group-item list-group-item-action"><strong>Registration date: </strong> {{user.registration_date|e}} </button>
+    </div>
+</section>
+
+<hr class="my-2">
+
+<!-- Samo korisnik koji je ulogovan ima mogucnost da brise i edituje SVOJE slike, dok tudje moze samo da gleda -->
+<!-- Picture section -->
+<section class="img-info-section">
+        {% if message == "" %}
+        <h3>User images</h3>
+
+    <div class="table-responsive tablesorter">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                    <th>Number of likes</th>
+                    <th>Image</th>
+                    <th>Action 1</th>
+                    {% if idForViewUser == userID %}
+                        <th>Action 2</th>
+                        <th>Action 3</th>
+                    {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% set count = 0 %}
+                {% for image in userPic %}
+                <tr class="img-table-body">
+                    {% set count = count + 1 %}
+                    <td>{{count}}</td>
+                    <td>{{image.name|e}}</td>
+                    <td>{{image.posted_at|e}}</td>
+                    <td>{{image.number_of_likes|e}}</td>
+                    <td><img class="gallery-img" src="../{{image.img_src|e}}" alt="image in table"></td>
+                    <td class="action">
+                        <a class='btn btn-secondary' href='{{urlroot}}/gallery/imgInfo/{{image.id|e}}'>More</a>
+                    </td>
+                    {% if idForViewUser == userID %}
+                        <td class="action">
+                            <a href="{{urlroot}}/gallery/editImage/{{image.id|e}}" class="btn btn-warning">Edit</a>
+                        </td>
+                        <td class="action">
+                            <a href="{{urlroot}}/gallery/deleteImage/{{image.id|e}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    {% endif %}
+                    </div>
+                    {% endfor %}
+            </tbody>
+
+        </table>
+    </div>
+    {% else %}
+        {{message}}
+    {% endif %} <!-- Endif za message -->
+</section>
+
+{% endblock content %}
+{% block foot %} {% endblock foot %}
+

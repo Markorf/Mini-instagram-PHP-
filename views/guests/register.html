@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Want to be member? Register</h1>
+<form class="needs-validation" novalidate method="POST" action="{{urlroot}}/guests/register">
+    <div class="form-row">
+        <div class="col-8">
+            <label for="validationCustom01">Username</label>
+            <input name="register_username" minlength="5" type="text" class="form-control" id="validationCustom01" placeholder="Username" value="{{username}}" required>
+            <div class="invalid">
+                  <p>{{usernameErr}}</p>
+                </div>
+        </div>
+
+        <div class="col-8">
+            <label for="validationCustom02">Email</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="inputGroupPrepend">@</span>
+                </div>
+                <input name="email" minlength="5" type="email" class="form-control" value="{{email}}" id="validationCustom02" placeholder="Email" aria-describedby="inputGroupPrepend" required>
+              
+            </div>
+              <div class="invalid">
+                  <p>{{emailErr}}</p>
+                </div>
+        </div>
+        <div class="col-8">
+            <label for="validationCustom03">Password</label>
+            <input name="register_password" minlength="5" type="password" class="form-control" id="validationCustom03" placeholder="Password" required>
+        </div>
+        <div class="col-8">
+            <label for="validationCustom04">Confirm password</label>
+            <input name="confirm-password" minlength="5" type="password" class="form-control" id="validationCustom04" placeholder="Confirm password" required>
+                 <div class="invalid">
+                  <p>{{passwordErr}}</p>
+                </div>
+        </div>
+
+        <div class="col-12">
+            <div class="form-group">
+                <div class="g-recaptcha" data-sitekey="6LeaiGcUAAAAABU9L-bQBfud6npGIONU6EWFL6QL"></div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                    <label class="form-check-label" for="invalidCheck">
+                        Agree to terms and conditions
+                    </label>
+                  
+                </div>
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </div>
+</form>
+<h3 class="mt-3">{{message}}</h3>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+
+<script src="{{urlroot}}/public/assets/js/check-fields.js"></script>
+{% endblock content %}

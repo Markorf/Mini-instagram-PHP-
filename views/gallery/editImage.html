@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block nav %}
+{% include "inc/navbar-registered.html" %}
+{% endblock nav %}
+
+{% block content %}
+<h1>Image info:</h1>
+<section class="img-info-section">
+    <h3>{{message}}</h3>
+    <form action="" method="POST">
+        <label for="img_name">Name</label>
+        <input name="img_name" type="text" class="form-control" value="{{image.name|e}}">
+        <label for="img_date">Date</label>
+        <input name="img_date" type="text" class="form-control" value="{{image.posted_at|e}}">
+        <label for="img_src">Src</label>
+        <input name="img_src" type="text" class="form-control disabled" value="{{image.img_src|e}}">
+        <button class="btn btn-warning" type="submit">EDIT</button>
+    </form>
+</section>
+
+{% endblock content %}
+
+

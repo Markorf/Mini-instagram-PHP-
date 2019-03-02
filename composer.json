@@ -1,0 +1,10 @@
+{
+    "name": "EC",
+    "require": {
+        "twig/twig": "~1.0",
+        "phpmailer/phpmailer": "^6.0"
+    },
+    "autoload": {
+        "classmap": ["classes"]
+    }
+}

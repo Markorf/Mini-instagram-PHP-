@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block nav %}
+{% include "inc/navbar-registered.html" %}
+{% endblock nav %}
+
+{% block content %}
+<h1>Image info:</h1>
+<section class="img-info-section">
+    <h3>{{message}}</h3>
+    <form action="" method="POST">
+        <input disabled type="text" class="form-control disabled" value="ID: {{image.id|e}}">
+        <input disabled type="text" class="form-control disabled" value="Name: {{image.name|e}}">
+        <input disabled type="text" class="form-control disabled" value="Date: {{image.posted_at|e}}">
+        <input disabled type="text" class="form-control disabled" value="Number of likes: {{image.number_of_likes|e}}">
+        <button class="btn btn-danger" type="submit">DELETE</button>
+    </form>
+</section>
+
+{% endblock content %}
+
+

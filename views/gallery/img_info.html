@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block nav %}
+{% include "inc/navbar-registered.html" %}
+{% endblock nav %}
+
+{% block content %}
+<h1>Image info:</h1>
+<section class="img-info-section">
+    <h3>{{message}}</h3>
+      <div class="list-group mt-3">
+  <button type="button" class="list-group-item list-group-item-action active">
+    <strong>Title: </strong> {{image.name}}
+  </button>
+          <button type="button" class="list-group-item list-group-item-action"><strong>Author: </strong><a href="{{urlroot}}/gallery/profile/{{image.author_id}}">{{image.username|e}}</a></button>
+  <button type="button" class="list-group-item list-group-item-action"><strong>Date: </strong> {{image.posted_at|e}}</button>
+  <button type="button" class="list-group-item list-group-item-action"><strong>Number of likes: </strong> {{image.number_of_likes|e}}</button>
+  <button type="button" class="list-group-item list-group-item-action"><strong>Users liked: </strong> 
+      {% for user in usersLikedArr %}
+          <a href="{{urlroot}}/gallery/profile/{{user.id}}">{{user.username}}</a>
+      {% endfor %}
+      </button>
+  <button type="button" class="list-group-item list-group-item-action"><strong>Image: </strong> <img class='info-img' src="../{{image.img_src|e}}" alt="shown-image"></button>
+</div>
+       
+</section>
+
+{% endblock content %}
+
+
